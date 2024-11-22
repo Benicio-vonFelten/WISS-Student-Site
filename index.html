@@ -5,65 +5,205 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WISS's Source Code</title>
     <style>
+        :root {
+            --normal-bg-light: #ffffff;
+            --normal-bg-dark: #121212;
+            --text-color: #1a1a1a;
+            --header-bg-color: #5D9BD3; /* Lighter blue for light mode */
+            --nav-bg-color: #333333;
+            --button-bg: #333333;
+            --button-hover-bg: #47663B;
+            --button-text-color: #ffffff;
+            --link-color: #000000;
+            --link-hover: linear-gradient(90deg, #ff7eb3, #5cdb95);
+        }
+        [data-theme="dark"] {
+            --text-color: #e0e0e0;
+            --header-bg-color: #3a6073; /* Dark mode header blue */
+            --nav-bg-color: #1f1f1f;
+            --button-bg: #333333;
+            --button-hover-bg: #47663B;
+            --button-text-color: #ffffff;
+            --link-color: #e0e0e0;
+        }
+
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--normal-bg-dark);
+            color: var(--text-color);
+            transition: background-color 1s, background-image 1s ease-in-out, color 0.3s;
         }
-        .module-list {
-            margin: 20px;
+        header {
+            background-color: var(--header-bg-color);
+            color: var(--text-color);
+            padding: 20px;
+            text-align: center;
         }
-        .module {
-            margin-bottom: 10px;
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background-color: var(--nav-bg-color);
         }
-        .folder {
-            display: none;
-            margin-left: 20px;
+        nav ul li {
+            display: inline-block;
         }
-        .folder a {
-            display: block;
+        nav ul li a {
+            display: inline-block;
+            color: var(--button-text-color);
+            text-align: center;
+            padding: 10px 30px;
             text-decoration: none;
-            color: #007BFF;
-            margin: 5px 0;
-        }
-        .folder a:hover {
-            text-decoration: underline;
-        }
-        .toggle {
             cursor: pointer;
-            color: #333;
-            font-weight: bold;
+            border-radius: 8px;
+            background-color: var(--button-bg);
+            transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
         }
-        .toggle:hover {
-            text-decoration: underline;
+        nav ul li a:hover {
+            background-color: var(--button-hover-bg);
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        a {
+            text-decoration: none;
+            color: var(--link-color);
+            position: relative;
+        }
+        a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: 2px;
+            background: var(--link-hover);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        section {
+            display: none;
+        }
+        section.active {
+            display: block;
+        }
+        footer {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 12px;
+            color: var(--text-color);
         }
     </style>
 </head>
-<body>
-    <h1>WISS's Source Code</h1>
-    <p>Alles, was du für WISS brauchst: Spicks, Projekte und mehr.</p>
-    <div class="module-list">
-        <div class="module">
-            <span class="toggle" onclick="toggleFolder('folder-106')">Modul 106</span>
-            <div id="folder-106" class="folder">
-                <a href="https://github.com/Benicio-vonFelten/WISS-Student-Site/tree/main/Module/106" target="_blank">Datei 1</a>
-                <a href="https://github.com/Benicio-vonFelten/WISS-Student-Site/tree/main/Module/106" target="_blank">Datei 2</a>
+<body data-theme="dark" data-bg-mode="normal" onload="initializeTheme()">
+    <header>
+        <h1>WISS's Source Code</h1>
+        <p>Alles, was du für WISS brauchst: Spicks, Projekte und mehr.</p>
+        <button class="theme-toggle" onclick="toggleTheme()">☀️ Hellmodus</button>
+        <button class="background-toggle" onclick="toggleChristmas()">🎅</button>
+    </header>
+    <nav>
+        <ul>
+            <li><a onclick="showSection('home')">Startseite</a></li>
+            <li><a onclick="showSection('projects')">Projekte</a></li>
+            <li><a onclick="showSection('tools')">Tools</a></li>
+            <li><a onclick="showSection('journals')">Journale</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="home" class="active">
+            <h2>Willkommen!</h2>
+            <p>Dies ist die Hauptseite meines Portfolios. Navigiere durch das Menü, um mehr zu entdecken.</p>
+        </section>
+        <section id="projects">
+            <h2>Projekte</h2>
+            <div>
+                <h3>Projekt 1: <a href="#" target="_blank">Notenrechner</a></h3>
+                <p>Beschreibung des Projekts...</p>
             </div>
-        </div>
-        <div class="module">
-            <span class="toggle" onclick="toggleFolder('folder-114')">Modul 114</span>
-            <div id="folder-114" class="folder">
-                <a href="https://github.com/Benicio-vonFelten/WISS-Student-Site/tree/main/Module/114" target="_blank">Datei 1</a>
-                <a href="https://github.com/Benicio-vonFelten/WISS-Student-Site/tree/main/Module/114" target="_blank">Datei 2</a>
+        </section>
+        <section id="tools">
+            <h2>Tools</h2>
+            <div>
+                <h3>Tool 1</h3>
+                <p>Beschreibung des Tools...</p>
             </div>
-        </div>
-        <!-- Repeat for all modules -->
-    </div>
+        </section>
+        <section id="journals">
+            <h2>Journale</h2>
+            <div>
+                <h3>Modul 106</h3>
+                <a href="https://github.com/Benicio-vonFelten/WISS-Student-Site/tree/main/Module/106" target="_blank">Zu den Dateien</a>
+            </div>
+            <div>
+                <h3>Modul 114</h3>
+                <a href="https://github.com/Benicio-vonFelten/WISS-Student-Site/tree/main/Module/114" target="_blank">Zu den Dateien</a>
+            </div>
+            <div>
+                <h3>Modul 122</h3>
+                <a href="https://github.com/Benicio-vonFelten/WISS-Student-Site/tree/main/Module/122" target="_blank">Zu den Dateien</a>
+            </div>
+            <div>
+                <h3>Modul 123</h3>
+                <a href="https://github.com/Benicio-vonFelten/WISS-Student-Site/tree/main/Module/123" target="_blank">Zu den Dateien</a>
+            </div>
+            <!-- Add more module links as needed -->
+        </section>
+    </main>
+    <footer>
+        <p>
+            Nicht von <a href="https://www.wiss.ch" target="_blank">WISS</a> gesponsert, erstellt oder unterstützt.
+        </p>
+    </footer>
     <script>
-        function toggleFolder(folderId) {
-            const folder = document.getElementById(folderId);
-            if (folder.style.display === 'none' || folder.style.display === '') {
-                folder.style.display = 'block';
+        function initializeTheme() {
+            const body = document.body;
+            const theme = body.getAttribute('data-theme');
+            body.style.backgroundColor = theme === 'dark' ? 'var(--normal-bg-dark)' : 'var(--normal-bg-light)';
+        }
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => section.classList.remove('active'));
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            const bgMode = body.getAttribute('data-bg-mode');
+            if (bgMode === 'normal') {
+                body.style.backgroundColor = newTheme === 'dark' ? 'var(--normal-bg-dark)' : 'var(--normal-bg-light)';
+                body.style.backgroundImage = 'none';
+            }
+        }
+
+        function toggleChristmas() {
+            const body = document.body;
+            const bgMode = body.getAttribute('data-bg-mode');
+            if (bgMode === 'normal') {
+                body.setAttribute('data-bg-mode', 'xmas');
+                body.style.backgroundImage = "url('./xmasbackground.jpg')";
             } else {
-                folder.style.display = 'none';
+                body.setAttribute('data-bg-mode', 'normal');
+                const theme = body.getAttribute('data-theme');
+                body.style.backgroundImage = 'none';
+                body.style.backgroundColor = theme === 'dark' ? 'var(--normal-bg-dark)' : 'var(--normal-bg-light)';
             }
         }
     </script>
