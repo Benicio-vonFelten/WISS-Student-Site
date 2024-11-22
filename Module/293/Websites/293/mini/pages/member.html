@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="DE">
+    <head>
+        <meta name="view-transition" content="same-origin">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Connections to JS and CSS -->
+        <script src="../js/javascript.js" defer></script>
+        <link href="../css/style.css" rel="stylesheet">
+
+        <!-- Current Page Tab Text -->
+        <title>Startseite</title>
+        <!-- Current Page Tab Icon -->
+        <link rel="icon" href="../assets/MiniLog.png" type="image/x-icon">
+    </head>
+    <body>
+        <div class="startseite" id="wrapper">
+            <header>
+                <article class="titel">
+                    <img src="../assets/MiniLog.png" alt="" class="Logo">
+                    <h3>Willkommen bei der <strong>MINI</strong> Club Seite von Benicio von Felten</h3>
+                </article>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html">HOME</a></li>
+                        <li><a href="../index.html/#Countryman">COUNTRYMAN</a></li>
+                        <li><a href="../index.html/#gepaeck">GEPÄCKRAUM</a></li>
+                        <li><a href="../index.html/#freihand">FREIHÄNDIG</a></li>
+                        <li><a href="../index.html/#vorteile">VORTEILE</a></li>
+                        <li><a href="../index.html/#neue">DER&nbsp;NEUE</a></li>
+                        <li><a href="../index.html/#all4">ALL4</a></li>
+                        <li><a href="member.html" class="current">MITGLIEDER</a></li>
+                        <li><a href="preise.html">PREISE</a></li>
+                        <li><a href="https://mini.ch" target="_blank">MINI</a></li>
+                    </ul>
+                </nav> 
+            </header>
+            <br>
+            <br>
+            <br>
+            <section>
+                <h1>Willkommen auf der Memberseite</h1>
+                <h2>Anmeldung zum Sommerfest</h2>
+                <form action="#" method="post" name="mebform">
+                    <fieldset>
+                        <legend>Koordinaten:</legend>
+                        <br>
+                        <label>Vorname(*): </label>
+                        <input type="text" required autofocus>
+                        <br>
+                        <label>Nachname(*): </label>
+                        <input type="text" required>
+                        <br>
+                        <label>Addresse: </label>
+                        <input type="text">
+                        <br>
+                        <label>E-Mail(*): </label>
+                        <input type="email" required>
+                        <br>
+                        <p>Die mit (*) gekennzeichneten Felder sind Pflichtfelder.</p>    
+                    </fieldset>
+                    <fieldset>
+                        <legend>Anmeldung zum Sommerfest:</legend>
+                        <br>
+                        <label>Ich bin dabei: (Verbindlich)</label>
+                        <br>
+                        <input type="radio" name="dabeira" value="Ja"> Ja
+                        <input type="radio" name="dabeira" value="Nein"> Nein
+                        <br>
+                        <label>Anzahl Personen: </label>
+                        <br>
+                        <input type="text">
+                        <br>
+                        <label>Mitgliedschaft?</label>
+                        <select name="mitglied">
+                            <option value="aktiv">Aktiv-Mitglied</option>
+                            <option value="passiv">Passiv-Mitglied</option>
+                        </select>
+                        <br>
+                        <label>Allergien: </label>
+                        <input type="checkbox">
+                        <label>Gluten</label>
+                        <input type="checkbox">
+                        <label>Laktoseintoleranz</label>
+                        <input type="checkbox">
+                        <label>Andere</label>
+                        <br>
+                        <label>Welche?</label>
+                        <input type="text">
+                    </fieldset>
+                    <fieldset>
+                        <legend>Mitteilung:</legend>
+                        <label>Bemerkung:</label><br>
+                        <textarea name="bem" cols="30" rows="5"></textarea>
+                        <br>
+                        <br>
+                        <input type="submit">
+                        <input type="reset">
+                    </fieldset>
+                </form>
+            </section>
+            <footer>
+               <p>&copy; 2024 von Felten Benicio</p>
+            </footer>
+        </div> <!-- end page wrapper-->
+    </body>
+</html>

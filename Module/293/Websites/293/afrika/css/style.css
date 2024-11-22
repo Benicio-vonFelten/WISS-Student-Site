@@ -1,0 +1,99 @@
+:root {
+    /* placeholder */
+    --test: 222;
+}
+
+body {
+    background-image: url("../assets/background.jpg");
+}
+
+nav ul{
+    display: flex;
+    background-color: #c9ada7;
+    border-radius: 50px;
+}
+
+nav ul li {
+    margin-right: 42px;
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: #4a4e69;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: normal;
+    font-size: larger;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#wrapper {
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.772);
+}
+
+h2 {
+    color: #4a4e69;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+ul {
+    list-style: square;
+}
+
+article ul li:hover {
+    transition: 0.2s;
+    border: 1px solid #4a4e69;
+    padding: 2px;
+    margin: -2px;
+    max-width: fit-content;
+}
+
+img {
+    padding-left: 30%;
+}
+
+#textrechts {
+    margin-left: 5%;
+}
+
+form {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#wrapperA {
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.381);
+}
+
+label {
+    float: left;
+    width: 10em;
+}
+
+.formbut {
+    float: left;
+    width: 100%;
+    border: 0.1px;
+    border-color: azure;
+}
+
+#formsub {
+    background-color: #dad7cd;
+}
+
+#formdel {
+    background-color: #a3b18a;
+}
+
+input[type="checkbox"]:checked {
+    accent-color: green;
+}
+
+p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

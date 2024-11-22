@@ -1,0 +1,134 @@
+:root {
+  --body-bg: rgb(18, 33, 52);
+  --nav-bg: rgb(70, 91, 115);
+  --text-color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  nav ul {
+      flex-direction: column;
+      align-items: center;
+  }
+}
+
+* {
+    box-sizing: border-box;
+  }
+
+html {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  min-height: 150vh;
+  margin: 0;
+  font-size: 1.25rem;
+  background: var(--body-bg);
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  gap: 2rem;
+  margin-right: 15rem;
+  font-size: large;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  max-height: 100svh;
+  background-color: var(--nav-bg);
+}
+
+h1 {
+  color: var(--text-color);
+}
+
+.Hamburger {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  display: grid;
+  gap: 1rem;
+  padding-block: 2rem;
+  font-size: 2rem;
+}
+
+.Hamburger li {
+  background-color: var(--nav-bg);
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  border-radius: 100svh 0 0 100svh;
+}
+
+.Hamburger li.active {
+  view-transition-name: NavTab;
+  background-color: var(--body-bg);
+  position: relative;
+}
+
+::view-transition-group(NavTab) {
+  animation-duration: 5s;
+}
+
+.Hamburger li::before, .Hamburger li::after {
+  --border-radius: 1rem;
+  content: "";
+  position: absolute;
+  width: var(--border-radius);
+  height: var(--border-radius);
+  right: 0;
+  background: var(--nav-bg);
+}
+
+.Hamburger li.active::before {
+  top: calc(var(--border-radius) * -1);
+  border-radius: 0 0 100vw 0;
+  box-shadow: 5px 5px 0 5px var(--body-bg);
+}
+
+.Hamburger li.active::after {
+  bottom: calc(var(--border-radius) * -1);
+  border-radius: 0 100vw 0 0;
+  box-shadow: 5px -5px 0 5px var(--body-bg);
+}
+
+.Hamburger a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+main {
+  text-decoration: none;
+  color: white;
+}
+
+.homekleintext {
+  font-size: 0.95rem;
+}
+
+footer {
+  color: white;
+}
+
+main {
+  font-size: medium;
+}
+
+section ul p {
+  margin: 0;
+}
+
+.wartunglebenslauf h1{
+  color: rgb(219, 146, 78);
+}
+
+.kontakttext {
+  font-size: larger;
+  gap: 10rem;
+  word-spacing: 10%;
+}
+
+.kontakttext p {
+  gap: 20rem;
+  word-spacing: 20%;
+}

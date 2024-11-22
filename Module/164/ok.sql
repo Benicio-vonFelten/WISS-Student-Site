@@ -1,0 +1,11 @@
+
+CREATE DATABASE IF NOT EXISTS SECOND_DB;
+USE SECOND_DB;
+
+CREATE TABLE employeees (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    last_name VARCHAR(100),
+    first_name VARCHAR(100),
+    address_line1 VARCHAR(100),
+    city VARCHAR(100)
+);

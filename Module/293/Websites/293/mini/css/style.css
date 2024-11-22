@@ -1,0 +1,189 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #4c4c4c;
+}
+
+header {
+  background-image: url(../assets/minishintergrund.jpg);
+  height: 20rem;
+  width: auto;
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+}
+
+.fl_legt {
+  float: left;
+  width: 15%;
+  margin-top: 15px;
+  padding-left: 10px;
+}
+
+.welcome {
+  color: #4c4c4c;
+  float: right;
+  width: 80%;
+  margin-top: 2%;
+  text-align: center;
+}
+
+.newswrapp {
+  display: flex;
+}
+
+.newswrapp > * { 
+  flex: 1 1 0%
+}
+
+.box_wrapp {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+#wrapper {
+  width: 80%;
+  margin: 0 auto;
+  background-color: white;
+}
+
+h1,h2 {
+  font-family: century;
+  color: #cc3333;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.6em;
+}
+
+
+/* Nav Styling  */
+
+nav ul {
+  list-style-type: none;
+  text-align: right;
+}
+
+nav ul li {
+  display: inline-block;
+  padding: 5px 10px 5px 0;
+  margin-right: 2px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+a:hover {
+  border: 2px solid black;
+}
+
+/* Articel Styling */
+
+.flex {
+  width: 60%;
+}
+
+.one {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.one > * {
+  flex-wrap: 1 1 20%;
+}
+
+.two {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.two > * {
+  flex-wrap: 1 1 20%;
+}
+
+/* Table Styling */
+
+table {
+  width: 50%;
+  margin: 0 auto;
+}
+
+table td {
+  border-style: dotted;
+}
+
+table caption {
+  color: #cc3333;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+table, table th {
+  border-style: dotted;
+  color: #4c4c4c;
+  border-collapse: collapse;
+  margin: 10px;
+}
+
+table thead, table th {
+  font-weight: bold;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+table tfoot {
+  text-align: center;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Formular CSS */
+
+form {
+	margin: 20px auto;
+	width: 60%;
+}
+
+fieldset {
+	border: 1px dotted #4c4c4c;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+legend {
+	color: #cc3333;
+	font-weight: bold;
+}
+
+label {
+	width: 10em;
+}
+
+form p {
+	margin-bottom: 3px;
+}
+
+/* Media Styling */
+
+@media only screen and (min-width : 320px)and (max-width : 480px) {
+  header {
+    font-size: 0.7em;
+    height: 200px;
+  }
+
+  article img {
+    max-width: 100%;
+  }
+}

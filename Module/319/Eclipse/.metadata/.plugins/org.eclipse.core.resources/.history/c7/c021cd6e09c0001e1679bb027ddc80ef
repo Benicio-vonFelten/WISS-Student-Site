@@ -1,0 +1,147 @@
+package games.tictactoe;
+
+import games.minimax.DefaultGameAction;
+import games.minimax.DefaultGameState;
+import games.minimax.GameAction;
+import games.minimax.GameState;
+import games.minimax.MinimaxGame;
+
+/**
+ * Implementiert das Spiel Tic Tac Toe und erweitert die abstrakte Klasse MinimaxGame.
+ * TicTacToeGame implementiert die spezifische Logik für das Tic Tac Toe-Spiel, einschließlich
+ * der Überprüfung auf einen Gewinner, der Ermittlung des aktuellen Spielers und der Berechnung
+ * von möglichen Aktionen und Spielzuständen.
+ * 
+ * @author Aleksandar Travanov
+ * @version 1.0
+ */
+public class TicTacToeGame extends MinimaxGame {
+
+	/**
+	 * Konstante, die den Spieler mit dem anzustebenden maximalen Score repräsentiert.
+	 */
+	public final static String PLAYER_MAX = "MAX";
+
+	/**
+	 * Konstante, die den Spieler mit dem anzusrebenden minimalen Score repräsentiert.
+	 */
+	public final static String PLAYER_MIN = "MIN";
+	
+	/**
+	 * Konstruktor der Klasse {@code TicTacToeGame}.
+	 */
+	public TicTacToeGame() {
+		super();
+	}
+
+	@Override
+	public boolean isTerminal(GameState state) {
+		// Überprüft, ob der Spielzustand terminal ist (keine Züge mehr oder ein Gewinner vorhanden).
+		return (nofMoves(state.toMatrix()) == 0 || winner(state.toMatrix()) != 0);
+	}
+
+	@Override
+	public int getValue(GameState state) {
+		// Gibt den Nutzenwert des Spielzustands zurück (Gewinner oder Unentschieden).
+		return winner(state.toMatrix());
+	}
+
+	@Override
+	public String getPlayer(GameState state) {
+		// Gibt den Spieler zurück, der den nächsten Zug machen soll, basierend auf der Anzahl der bisherigen Züge.
+		if (nofMoves(state.toMatrix()) % 2 == 0) {
+			return PLAYER_MIN;
+		} else {
+			return PLAYER_MAX;
+		}
+	}
+
+	@Override
+	public GameAction[] getActions(GameState state) {
+		// Gibt ein Array möglicher Aktionen zurück, die im aktuellen Spielzustand unternommen werden können.
+		GameAction[] actions = new GameAction[nofMoves(state.toMatrix())];
+		int player = MinimaxGame.PLAYER_MAX.equals(getPlayer(state)) ? 1 : -1;
+		int k = 0;
+		int[][] matrix = state.toMatrix();
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix[i].length; j++) {
+				if (matrix[i][j] == 0) {
+					int[] array = { i, j, player };
+					actions[k] = new DefaultGameAction(array);
+					k++;
+				}
+			}
+		}
+		return actions;
+	}
+
+	@Override
+	public GameState getResult(GameState state, GameAction action) {
+		// Berechnet den resultierenden Spielzustand nach Anwendung einer Aktion auf den aktuellen Zustand.
+		int[][] stateMatrix = state.toMatrix();
+		int[] array = action.toArray();
+		stateMatrix[array[0]][array[1]] = array[2];
+		return new DefaultGameState(stateMatrix);
+	}
+
+	/**
+	 * Überprüft, ob es einen Gewinner im aktuellen Spielzustand gibt.
+	 * <p>
+	 * Bemerkung: 1er in der Matrix sind Felder mit X (MAX), -1er Felder mit O (MIN) und Oer bedeuten, dass die
+	 * entsprechenden Felder noch nicht angeklickt wurden.
+	 *
+	 * @param matrix Die Spielmatrix als 2D-Array.
+	 * @return Der Spieler, der gewonnen hat (1 für MAX, -1 für MIN, 0 für kein Gewinner).
+	 */
+	private int winner(int[][] matrix) {
+	    for (int i = 0; i < 3; i++) {
+	        // Überprüfung der Zeilen
+	        if (matrix[i][0] == matrix[i][1] && matrix[i][1] == matrix[i][2] && matrix[i][0] != 0) {
+	            return matrix[i][0]; // Rückgabe des Gewinners
+	        }
+	        // Überprüfung der Spalten
+	        if (matrix[0][i] == matrix[1][i] && matrix[1][i] == matrix[2][i] && matrix[0][i] != 0) {
+	            return matrix[0][i]; // Rückgabe des Gewinners
+	        }
+	    }
+	    // Überprüfung der Diagonalen
+	    if (matrix[0][0] == matrix[1][1] && matrix[1][1] == matrix[2][2] && matrix[0][0] != 0) {
+	        return matrix[0][0]; // Rückgabe des Gewinners
+	    }
+	    // Überprüfung der anderen Diagonalen
+	    if (matrix[0][2] == matrix[1][1] && matrix[1][1] == matrix[2][0] && matrix[0][2] != 0) {
+	        return matrix[0][2]; // Rückgabe des Gewinners
+	    }
+	    return 0; // Rückgabe 0 bedeutet, dass es keinen klaren Gewinner gibt
+	}
+
+	/**
+	 * Ermittelt die Anzahl der verbleibenden möglichen Züge im aktuellen Spielzustand.
+	 * <p>
+	 * Bemerkung: 0er Einträge in der Matrix bedeuten, dass die entsprechenden Felder noch nicht
+	 * angeklickt wurden.
+	 * 
+	 * @param matrix Die Spielmatrix als 2D-Array.
+	 * @return Die Anzahl der verbleibenden Züge.
+	 */
+	private int nofMoves(int[][] matrix) {
+	    // IVariabel erstellung
+	    int remainingMoves = 0;
+
+	    // Schleife durch die Zeilen der Spielmatrix
+	    for (int i = 0; i < 3; i++) {
+	        // Schleife durch die Spalten der Spielmatrix
+	        for (int j = 0; j < 3; j++) {
+	            // Überprüfen, ob das aktuelle Feld leer ist (Wert 0)
+	            if (matrix[i][j] == 0) {
+	                // Wenn das Feld leer ist, erhöhe den Zähler für verbleibende Züge
+	                remainingMoves++;
+	            }
+	        }
+	    }
+
+	    // Rückgabe der Gesamtanzahl der verbleibenden Züge
+	    return remainingMoves;
+	}
+}
+

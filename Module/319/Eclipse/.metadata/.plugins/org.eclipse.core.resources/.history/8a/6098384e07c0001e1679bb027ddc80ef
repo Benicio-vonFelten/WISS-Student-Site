@@ -1,0 +1,51 @@
+package nim;
+
+import java.util.Scanner;
+
+public class NimGame {
+    private Player player1;
+    private Player player2;
+    private Pile pile;
+
+    public NimGame() {
+        player1 = new Player("Player 1");
+        player2 = new Player("Player 2");
+        pile = new Pile(10); // Steine anzahl
+    }
+
+    public void startGame() {
+        Scanner scanner = new Scanner(System.in);
+
+        while (pile.getStones() > 0) {
+            System.out.println("Current pile: " + pile.getStones() + " stones");
+
+            // àndert wer dran ist
+            playerMove(player1, scanner);
+            if (pile.getStones() <= 0) {
+                System.out.println(player1.getName() + " wins!");
+                break;
+            }
+
+            playerMove(player2, scanner);
+            if (pile.getStones() <= 0) {
+                System.out.println(player2.getName() + " wins!");
+            }
+        }
+
+        scanner.close();
+    }
+
+    private void playerMove(Player player, Scanner scanner) {
+        System.out.println(player.getName() + ", enter the number of stones to remove:");
+        int stonesToRemove = scanner.nextInt();
+
+        // Stehlt den Input fest
+        while (stonesToRemove <= 0 || stonesToRemove > pile.getStones()) {
+            System.out.println("Invalid input. Enter a valid number of stones to remove:");
+            stonesToRemove = scanner.nextInt();
+        }
+
+        // Update the pile
+        pile.removeStones(stonesToRemove);
+    }
+}

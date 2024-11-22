@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="view-transition" content="same-origin">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/javascript.js" defer></script>
+        <link href="../css/style.css" rel="stylesheet">
+        <title>Startseite</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="../index.html#Etymologie">Etymologie</a></li>
+                    <li><a href="../index.html#wasser">Gewässer</a></li>
+                    <li><a href="../index.html#geo">Geologie</a></li>
+                    <li><a href="../index.html#tiere">Vegetation und Tierwelt</a></li>
+                    <li><a href="../index.html#leute">Bevölkerung</a></li>
+                    <li><a href="../index.html#sprache">Sprachen</a></li>
+                    <li><a href="../index.html#religion">Religion</a></li>
+                    <li><a href="../index.html#gesundheit">Gesundheit</a></li>
+                    <li><a href="anmeldung.html">Anmeldung</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div id="wrapperA">
+            <form action="#">
+                <fieldset>
+                    <legend>Anmeldung</legend>
+                    <p>
+                      <label for="#">Sind sie ein Weiblich oder Männlich</label><br>
+                        <input type="radio" name="WM" required>Weiblich
+                        <input type="radio" name="WM">Männlich  
+                    </p>
+                    <p>
+                        <label for="#">Name:</label>
+                        <input type="text" required> 
+                    </p>
+                    <p>
+                        <label for="#">Nachname:</label>
+                        <input type="text" required>
+                    </p>
+                    <p>
+                        <label for="#">Email:</label>
+                        <input type="email" required> 
+                    </p>
+                    <label for="#">Wie sind Sie auf uns aufmerksam geworden?</label>
+                    <select name="#" id="#" required>
+                        <option value="">Tageszeitung</option>
+                        <option value="">Telefonbuch</option>
+                        <option value="">Freunde</option>
+                    </select>
+                    <br>
+                    <br>
+                    <p>
+                        <label for="#">Möchten sie Newsletter erhalten?</label>
+                        <input type="checkbox" checked>
+                    </p>
+                    <br>
+                    <input type="submit" class="formbut" id="formsub">
+                    <input type="reset" class="formbut" id="formdel">
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>

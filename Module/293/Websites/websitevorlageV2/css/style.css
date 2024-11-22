@@ -1,0 +1,33 @@
+:root {
+  --bgcolor: rgb(191, 231, 244);
+  --fontcolor: black;
+}
+
+@media only screen and (max-width: 600px) {
+  nav ul {
+      flex-direction: column;
+      align-items: center;
+  }
+}
+
+* {
+    box-sizing: border-box;
+  }
+
+html {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: var(--bgcolor);
+}
+
+body {
+  color: var(--fontcolor);
+  min-height: 150vh;
+  margin: 0;
+  font-size: 1.25rem;
+  background: var(--body-bg);
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  gap: 2rem;
+  margin-right: 15rem;
+  font-size: large;
+}
