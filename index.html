@@ -96,6 +96,22 @@
         section.active {
             display: block;
         }
+        .theme-toggle,
+        .background-toggle {
+            margin-top: 10px;
+            cursor: pointer;
+            padding: 10px 30px;
+            background-color: var(--button-bg);
+            color: var(--button-text-color);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s ease;
+        }
+        .background-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
         footer {
             position: fixed;
             bottom: 10px;
@@ -128,41 +144,98 @@
         <section id="projects">
             <h2>Projekte</h2>
             <div>
-                <h3>Projekt 1: <a href="#" target="_blank">Notenrechner</a></h3>
+                <h3>Projekt 1: <a href="https://github.com/your-repo" target="_blank">Notenrechner</a></h3>
+                <p>Beschreibung des Projekts...</p>
+            </div>
+            <div>
+                <h3>Projekt 2: <a href="https://github.com/your-repo" target="_blank">Punkte-zu-Note-Konverter</a></h3>
                 <p>Beschreibung des Projekts...</p>
             </div>
         </section>
         <section id="tools">
             <h2>Tools</h2>
             <div>
-                <h3>Tool 1</h3>
-                <p>Beschreibung des Tools...</p>
+                <h3><a href="grade-calculator.html">Notenrechner</a></h3>
+            </div>
+            <div>
+                <h3><a href="points-to-grade.html">Punkte-zu-Note-Konverter</a></h3>
             </div>
         </section>
         <section id="journals">
-            <h2>Journale</h2>
+            <h2>Journale und Dateien</h2>
             <div>
                 <h3>Modul 106</h3>
-                <a href="https://github.com/Benicio-vonFelten/WISS-Student-Site/tree/main/Module/106" target="_blank">Zu den Dateien</a>
+                <a href="Module/106.pdf" download>Zu den Dateien</a>
             </div>
             <div>
                 <h3>Modul 114</h3>
-                <a href="https://github.com/Benicio-vonFelten/WISS-Student-Site/tree/main/Module/114" target="_blank">Zu den Dateien</a>
+                <a href="Module/114.pdf" download>Zu den Dateien</a>
             </div>
             <div>
                 <h3>Modul 122</h3>
-                <a href="https://github.com/Benicio-vonFelten/WISS-Student-Site/tree/main/Module/122" target="_blank">Zu den Dateien</a>
+                <a href="Module/122.pdf" download>Zu den Dateien</a>
             </div>
             <div>
                 <h3>Modul 123</h3>
-                <a href="https://github.com/Benicio-vonFelten/WISS-Student-Site/tree/main/Module/123" target="_blank">Zu den Dateien</a>
+                <a href="Module/123.pdf" download>Zu den Dateien</a>
             </div>
-            <!-- Add more module links as needed -->
+            <div>
+                <h3>Modul 129</h3>
+                <a href="Module/129.pdf" download>Zu den Dateien</a>
+            </div>
+            <div>
+                <h3>Modul 141</h3>
+                <a href="Module/141.pdf" download>Zu den Dateien</a>
+            </div>
+            <div>
+                <h3>Modul 143</h3>
+                <a href="Module/143.pdf" download>Zu den Dateien</a>
+            </div>
+            <div>
+                <h3>Modul 158</h3>
+                <a href="Module/158.pdf" download>Zu den Dateien</a>
+            </div>
+            <div>
+                <h3>Modul 164</h3>
+                <a href="Module/164.pdf" download>Zu den Dateien</a>
+            </div>
+            <div>
+                <h3>Modul 184</h3>
+                <a href="Module/184.pdf" download>Zu den Dateien</a>
+            </div>
+            <div>
+                <h3>Modul 188</h3>
+                <a href="Module/188.pdf" download>Zu den Dateien</a>
+            </div>
+            <div>
+                <h3>Modul 231</h3>
+                <a href="Module/231.pdf" download>Zu den Dateien</a>
+            </div>
+            <div>
+                <h3>Modul 254</h3>
+                <a href="Module/254.pdf" download>Zu den Dateien</a>
+            </div>
+            <div>
+                <h3>Modul 293</h3>
+                <a href="Module/293.pdf" download>Zu den Dateien</a>
+            </div>
+            <div>
+                <h3>Modul 306</h3>
+                <a href="Module/306.pdf" download>Zu den Dateien</a>
+            </div>
+            <div>
+                <h3>Modul 319</h3>
+                <a href="Module/319.pdf" download>Zu den Dateien</a>
+            </div>
+            <div>
+                <h3>Modul 431</h3>
+                <a href="Module/431.pdf" download>Zu den Dateien</a>
+            </div>
         </section>
     </main>
     <footer>
         <p>
-            Nicht von <a href="https://www.wiss.ch" target="_blank">WISS</a> gesponsert, erstellt oder unterstützt.
+            Nicht von <a href="https://www.wiss.ch" target="_blank" style="color: inherit; text-decoration: none;">WISS</a> gesponsert, erstellt oder unterstützt.
         </p>
     </footer>
     <script>
