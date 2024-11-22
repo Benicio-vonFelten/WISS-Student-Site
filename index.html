@@ -6,18 +6,19 @@
     <title>WISS's Source Code</title>
     <style>
         :root {
-            --normal-bg-light: #ffffff;
-            --normal-bg-dark: #121212;
+            --bg-color: url('./xmasbackground.jpg') repeat; /* Christmas background */
             --text-color: #1a1a1a;
-            --header-bg-color: #5D9BD3; /* Lighter blue for light mode */
+            --header-bg-color: #5D9BD3; /* Light blue for light mode */
             --nav-bg-color: #333333;
             --button-bg: #333333;
             --button-hover-bg: #47663B;
             --button-text-color: #ffffff;
             --link-color: #000000;
             --link-hover: linear-gradient(90deg, #ff7eb3, #5cdb95);
+            --highlight-border: 2px solid #ff7eb3;
         }
         [data-theme="dark"] {
+            --bg-color: url('./xmasbackground.jpg') repeat; /* Same background for dark mode */
             --text-color: #e0e0e0;
             --header-bg-color: #3a6073; /* Dark mode header blue */
             --nav-bg-color: #1f1f1f;
@@ -25,21 +26,30 @@
             --button-hover-bg: #47663B;
             --button-text-color: #ffffff;
             --link-color: #e0e0e0;
+            --highlight-border: 2px solid #2575fc;
         }
 
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--normal-bg-dark);
+            background: var(--bg-color) fixed; /* Fixed background */
             color: var(--text-color);
-            transition: background-color 1s, background-image 1s ease-in-out, color 0.3s;
+            transition: background-color 0.3s, color 0.3s;
         }
         header {
             background-color: var(--header-bg-color);
             color: var(--text-color);
             padding: 20px;
             text-align: center;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Shadow for readability */
+        }
+        header p {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Shadow for readability */
         }
         nav ul {
             list-style-type: none;
@@ -60,14 +70,32 @@
             padding: 10px 30px;
             text-decoration: none;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
             border-radius: 8px;
             background-color: var(--button-bg);
-            transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
         }
         nav ul li a:hover {
             background-color: var(--button-hover-bg);
             transform: scale(1.1);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+        nav ul li a:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
         }
         a {
             text-decoration: none;
@@ -90,29 +118,34 @@
             transform: scaleX(1);
             transform-origin: left;
         }
-        section {
-            display: none;
-        }
-        section.active {
-            display: block;
-        }
-        .theme-toggle,
-        .background-toggle {
+        .theme-toggle {
             margin-top: 10px;
             cursor: pointer;
             padding: 10px 30px;
+            border: var(--highlight-border);
             background-color: var(--button-bg);
             color: var(--button-text-color);
             border-radius: 8px;
             font-size: 16px;
             transition: background-color 0.3s, color 0.3s, transform 0.3s ease;
         }
-        .background-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
+        .theme-toggle:hover {
+            background-color: var(--button-hover-bg);
+            transform: scale(1.1);
         }
-        footer {
+        main {
+            padding: 20px;
+        }
+        section {
+            display: none;
+        }
+        section.active {
+            display: block;
+        }
+        section h2, section p {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Shadow for text in sections */
+        }
+        footer p {
             position: fixed;
             bottom: 10px;
             right: 10px;
@@ -121,19 +154,18 @@
         }
     </style>
 </head>
-<body data-theme="dark" data-bg-mode="normal" onload="initializeTheme()">
+<body data-theme="dark">
     <header>
         <h1>WISS's Source Code</h1>
-        <p>Alles, was du für die WISS brauchst: Spicks, Projekte und mehr.</p>
+        <p>Alles, was du für WISS brauchst: Spicks, Projekte und mehr.</p>
         <button class="theme-toggle" onclick="toggleTheme()">☀️ Hellmodus</button>
-        <button class="background-toggle" onclick="toggleChristmas()">🎅</button>
     </header>
     <nav>
         <ul>
             <li><a onclick="showSection('home')">Startseite</a></li>
             <li><a onclick="showSection('projects')">Projekte</a></li>
             <li><a onclick="showSection('tools')">Tools</a></li>
-            <li><a onclick="showSection('journals')">Spicks</a></li>
+            <li><a onclick="showSection('journals')">Journale</a></li>
         </ul>
     </nav>
     <main>
@@ -162,14 +194,28 @@
             </div>
         </section>
         <section id="journals">
-            <h2>Spicks und Dateien</h2>
+            <h2>Spicks und Module</h2>
             <div>
-                <h3>Modul 123</h3>
-                <a href="module123.pdf" download>Journal herunterladen</a>
-            </div>
-            <div>
-                <h3>Modul 124</h3>
-                <a href="module124.pdf" download>Journal herunterladen</a>
+                <h3>Module</h3>
+                <ul>
+                    <li><a href="Module/106" download>Modul 106</a></li>
+                    <li><a href="Module/114" download>Modul 114</a></li>
+                    <li><a href="Module/122" download>Modul 122</a></li>
+                    <li><a href="Module/123" download>Modul 123</a></li>
+                    <li><a href="Module/129" download>Modul 129</a></li>
+                    <li><a href="Module/141" download>Modul 141</a></li>
+                    <li><a href="Module/143" download>Modul 143</a></li>
+                    <li><a href="Module/158" download>Modul 158</a></li>
+                    <li><a href="Module/164" download>Modul 164</a></li>
+                    <li><a href="Module/184" download>Modul 184</a></li>
+                    <li><a href="Module/188" download>Modul 188</a></li>
+                    <li><a href="Module/231" download>Modul 231</a></li>
+                    <li><a href="Module/254" download>Modul 254</a></li>
+                    <li><a href="Module/293" download>Modul 293</a></li>
+                    <li><a href="Module/306" download>Modul 306</a></li>
+                    <li><a href="Module/319" download>Modul 319</a></li>
+                    <li><a href="Module/431" download>Modul 431</a></li>
+                </ul>
             </div>
         </section>
     </main>
@@ -179,12 +225,6 @@
         </p>
     </footer>
     <script>
-        function initializeTheme() {
-            const body = document.body;
-            const theme = body.getAttribute('data-theme');
-            body.style.backgroundColor = theme === 'dark' ? 'var(--normal-bg-dark)' : 'var(--normal-bg-light)';
-        }
-
         function showSection(sectionId) {
             const sections = document.querySelectorAll('section');
             sections.forEach(section => section.classList.remove('active'));
@@ -193,31 +233,13 @@
                 activeSection.classList.add('active');
             }
         }
-
         function toggleTheme() {
             const body = document.body;
             const currentTheme = body.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             body.setAttribute('data-theme', newTheme);
-            const bgMode = body.getAttribute('data-bg-mode');
-            if (bgMode === 'normal') {
-                body.style.backgroundColor = newTheme === 'dark' ? 'var(--normal-bg-dark)' : 'var(--normal-bg-light)';
-                body.style.backgroundImage = 'none';
-            }
-        }
-
-        function toggleChristmas() {
-            const body = document.body;
-            const bgMode = body.getAttribute('data-bg-mode');
-            if (bgMode === 'normal') {
-                body.setAttribute('data-bg-mode', 'xmas');
-                body.style.backgroundImage = "url('./xmasbackground.jpg')";
-            } else {
-                body.setAttribute('data-bg-mode', 'normal');
-                const theme = body.getAttribute('data-theme');
-                body.style.backgroundImage = 'none';
-                body.style.backgroundColor = theme === 'dark' ? 'var(--normal-bg-dark)' : 'var(--normal-bg-light)';
-            }
+            const toggleButton = document.querySelector('.theme-toggle');
+            toggleButton.textContent = newTheme === 'dark' ? '☀️ Hellmodus' : '🌙 Dunkelmodus';
         }
     </script>
 </body>
